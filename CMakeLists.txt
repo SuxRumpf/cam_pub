@@ -12,6 +12,7 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(image_transport REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -25,11 +26,10 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(cam_pub src/cam_pub_node.cpp)
-ament_target_dependencies(cam_pub rclcpp std_msgs sensor_msgs cv_bridge OpenCV)
+ament_target_dependencies(cam_pub rclcpp std_msgs sensor_msgs cv_bridge OpenCV image_transport)
 
 install(TARGETS
   cam_pub
- 
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
